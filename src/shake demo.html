@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>shake demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 600px;
+            height: 100px;
+            background-color: pink;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .box {
+            font-weight: normal;
+            /* animation: demo 0.3s linear infinite; */
+        }
+
+        @keyframes demo {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(5deg);
+            }
+
+            50% {
+                transform: rotate(0deg);
+            }
+
+            75% {
+                transform: rotate(-5deg);
+            }
+
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <script>
+        let box = document.querySelector('#box')
+
+        box.addEventListener("animationiteration", function () {
+            console.log("动画重复运动");
+            box.style.animationPlayState = "paused"
+            setTimeout(() => box.style.animationPlayState = "running", 500)
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.wrap {
+			width: 600px;
+			/* height: 1000px; */
+			margin: 50px auto;
+		}
+
+		.top {
+			width: 100%;
+			height: 300px;
+			background: red;
+			transform: translateY(200px);
+			transition: transform cubic-bezier(0.49, 0.66, 0, 1.21) .3s;
+		}
+
+		.middle {
+			width: 100%;
+			height: 400px;
+			background: yellow;
+			transform: scale(0);
+			transition: transform cubic-bezier(0.49, 0.66, 0, 1.21) .3s;
+		}
+
+		.bottom {
+			width: 100%;
+			height: 300px;
+			background: green;
+			transform: translateY(-200px);
+			transition: transform cubic-bezier(0.49, 0.66, 0, 1.21) .3s;
+		}
+
+		.open>.top,
+		.open>.bottom {
+			transform: translateY(0);
+		}
+
+		.open>.middle {
+			transform: scale(1);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="wrap">
+		<div class="top">top</div>
+		<div class="middle">middle</div>
+		<div class="bottom">bottom</div>
+	</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script type="text/javascript">
+	setTimeout(() => {
+		$('.wrap').addClass('open')
+	},500)
+</script>
+
+</html>

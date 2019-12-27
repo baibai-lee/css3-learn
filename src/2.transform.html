@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2.transform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+
+            transition: 2s;
+        }
+
+        .box1:hover {
+            /* 旋转 */
+            transform: rotate(90deg)
+        }
+
+        /* 
+        box1
+        transform为2D变换，包括 旋转、缩放、倾斜、移动，其变化默认同样为突变，因此需要配合 transition 才可以做出连续的动画
+        书写位置 ---> 应当写在元素的特定状态的选择器中
+         */
+
+        /* 
+         box1 旋转 rotate()
+         接收一个角度作为参数，单位为 deg --- 角度，正值为顺时针旋转，负值为逆时针旋转，旋转中心为元素的几何中心，经测试，传入 数字、π均无效
+
+         注意！：参数需要为0时，同样需要加上角度 deg ，直接传入 0 无法识别
+          */
+
+        .box2:hover {
+            /* 缩放 */
+            transform: scale(2, 0.5);
+            /* 宽度两倍，高度0.5倍 */
+
+            /* transform: scale(0.5); */
+            /* 整体0.5倍 */
+        }
+
+        /* 
+        box2 缩放 scale()
+        接收两个数字作为参数，指定元素缩放的倍数。第一个参数决定宽度，第二个决定高度
+        也可以接受一个参数，作为整体的放大倍数
+
+        缩放时，如果不是等比缩放，会导致容器内的文字变形
+         */
+
+        .box3:hover {
+            /* transform: skew(0deg,30deg) */
+            /* transform: skew(30deg,0deg) */
+            transform: skew(30deg, 30deg)
+                /* transform: skew(0deg,-30deg) */
+        }
+
+        /* 
+        box3 倾斜 skew()
+        接收两个角度作为参数，指定元素倾斜的角度。第一个参数决定X轴（水平），第二个决定Y轴（垂直），可以接受负值
+         */
+
+        .box4:hover {
+            transform: translate(100px, 100px)
+                /* transform: translate(100px,-100px) */
+                /* 可以接受负值 */
+
+                /* transform: translate(100px,-100); */
+                /* 无法接受不带单位 上面一句是错误示例 */
+
+                /* transform: translate(0px,100px) */
+                /* 当位移距离为0时，可以接受不带单位，上面一句可以正常向下位移 */
+        }
+
+        /* 
+         box4 位移 skew()
+         相当于在二维坐标系上位移，X轴正方向为右，Y轴正方向为下
+         接收两个长度(px)作为参数，指定元素位移的距离。第一个参数决定X轴（水平），第二个决定Y轴（垂直），可以接受负值
+          */
+
+        /* .box5:hover {
+            transform: matrix()
+
+            https://www.zhangxinxu.com/wordpress/2012/06/css3-transform-matrix-%E7%9F%A9%E9%98%B5/
+        } */
+    </style>
+</head>
+
+<body>
+    <div class="box box1">Box1</div>
+    <div class="box box2">Box2</div>
+    <div class="box box3">Box3</div>
+    <div class="box box4">Box4</div>
+    <div class="box box5">Box5</div>
+</body>
+
+</html>

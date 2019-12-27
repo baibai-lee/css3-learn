@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>translate demo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 400px;
+            height: 100px;
+            background-color: pink;
+            margin-bottom: 10px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .spans {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 5px;
+            position: absolute;
+            bottom: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            background-color: pink;
+            color: white;
+            font-size: 10px;
+
+            box-shadow: 1px 1px rgba(0, 0, 0, 0.3)
+        }
+
+        #start {
+            right: 110px;
+        }
+
+        #hidden {
+            right: 55px;
+        }
+
+        #show {
+            right: 0;
+        }
+
+        .box2 {
+            height: 200px;
+            display: none;
+            /* transform: scale(0); */
+
+            /* transition: 3s; */
+            /* transform: scale(1.05) translateZ(0); */
+            animation: start 0.5s 1 linear;
+        }
+
+        @keyframes start {
+            0% {
+                /* width: 0px;
+                height: 0px;
+                background-color: #000;
+                opacity: 0; */
+
+                transform: scale(0)
+            }
+
+            /* 
+            50% {
+                width: 400px;
+                height: 100px;
+            } */
+
+            100% {
+                /* width: 400px;
+                height: 200px;
+                opacity: 1; */
+
+                transform: scale(1)
+            }
+
+
+        }
+
+        .box1,
+        .box3 {
+            transition: 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1" id="box1">Box1</div>
+    <div class="box box2" id="box2" style="overflow: hidden">
+        <img src="http://i1.mifile.cn/a4/xmad_15625789613185_yOkET.jpg" alt="">
+    </div>
+    <div class="box box3" id="box3">Box3</div>
+
+    <span class="spans" id="start">start</span>
+    <span class="spans" id="hidden">hidden</span>
+    <span class="spans" id="show">show</span>
+</body>
+<script>
+    let showBtn = document.querySelector('#show')
+    let hiddenBtn = document.querySelector('#hidden')
+    let startBtn = document.querySelector('#start')
+
+    let box2 = document.querySelector('#box2')
+
+    showBtn.addEventListener('click', () => {
+        box2.style.display = 'flex'
+    })
+
+    hiddenBtn.addEventListener('click', () => {
+        box2.style.display = 'none'
+    })
+
+    startBtn.addEventListener('click', () => {
+        box2.style.display = 'flex'
+    })
+</script>
+
+</html>

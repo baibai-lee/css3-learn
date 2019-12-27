@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>4.javascript event</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .box1 {
+            animation: first 3s linear 3;
+        }
+
+        @keyframes first {
+            0% {
+                width: 100px;
+                height: 100px;
+            }
+
+            25% {
+                width: 200px;
+            }
+
+            50% {
+                height: 300px;
+            }
+
+            100% {
+                width: 400px;
+                height: 400px;
+            }
+        }
+
+        .box2 {
+            transition: 3s;
+            transition-delay: 3s;
+        }
+
+        .box2:hover {
+            width: 400px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1" id="box1">Box1</div>
+    <div class="box box2" id="box2">Box2</div>
+</body>
+
+<script>
+    // 动画事件 
+    var box1 = document.getElementById("box1");
+
+    // 动画开始时事件
+    box1.addEventListener("animationstart", function () {
+        console.log("动画开始");
+    })
+
+    // 动画重复运动时事件
+    box1.addEventListener("animationiteration", function () {
+        console.log("动画重复运动");
+    })
+
+    // 动画结束时事件
+    box1.addEventListener("animationend", function () {
+        console.log("动画结束");
+    })
+
+    // animationstart
+    // animationend
+    // animationiteration
+
+    // webkitAnimationStart
+    // webkitAnimationIteration
+    // webkitAnimationEnd
+
+    // 以上两种写法测试时均可以运行，但mdn的标准写法为第一种
+</script>
+
+<script>
+    // 过渡事件
+    var box2 = document.getElementById("box2");
+
+    box2.addEventListener('transitionstart', () => {
+        console.log('过渡正式开始')
+    })
+
+    box2.addEventListener('transitioncancel', () => {
+        console.log('过渡取消')
+    })
+
+    box2.addEventListener('transitionend', () => {
+        console.log('过渡结束')
+    })
+
+    box2.addEventListener('transitionrun', () => {
+        console.log('过渡运行')
+    })
+    // transitionstart
+    // transitioncancel
+    // transitionend
+    // transitionrun
+
+    // transitionstart 为过渡的延迟过后，正式开始运行
+    // transitionrun 为整个流程的开始，包括过渡正式开始前的延迟
+    // transitioncancel 当过渡的流程因非正常原因结束，例如 :hover 时，鼠标移开元素
+    
+</script>
+
+</html>

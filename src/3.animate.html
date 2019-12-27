@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3.animate</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .box1 {
+            animation-name: first;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            /* animation-delay: 2s; */
+            animation-iteration-count: 3;
+            /* animation-direction: alternate; */
+            /* animation-play-state: running; */
+        }
+
+        /* @keyframes first {
+            from {
+                width: 200px;
+                height: 200px;
+            }
+
+            to {
+                width: 500px;
+                height: 500px;
+                background: yellow;
+            }
+        } */
+
+
+        .box2 {
+            animation: second 3s linear 3;
+        }
+
+        @keyframes second {
+            0% {
+                background: red;
+            }
+
+            25% {
+                background: yellow;
+                width: 300px;
+            }
+
+            50% {
+                background: blue;
+                width: 200px;
+            }
+
+            100% {
+                background: green;
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">Box1</div>
+    <div class="box box2">Box2</div>
+</body>
+
+</html>

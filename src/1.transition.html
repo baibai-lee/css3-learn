@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>1.transition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-bottom: 30px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-size: 28px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .box1 {
+            transition: 1s;
+
+        }
+
+        .box1:hover {
+            width: 300px;
+            height: 200px;
+            background-color: deeppink;
+        }
+
+        /*
+        transition 为元素的变化添加了一个时间轴
+
+        box1
+        书写位置 ---> 可以写在即将定义动画的元素的某个状态里，但感觉写在 基本状态 里更合适
+            并且发现，在box1中的变换，transition: 1s; 放在基态中能一直有线性变换，放在:hover中在鼠标移开时会突变
+            猜测：transition 为其元素增加了一个变化的时间轴，放在伪类上，就相当于只在特定状态的时候有时间轴，因此鼠标移开时，变化为突变
+
+        
+        基本描述 ---> 
+            transition	                在一个属性中设置四个过渡属性
+            transition-property	        规定应用过渡的 CSS 属性的名称
+            transition-duration	        定义过渡效果花费的时间。默认是 0
+            transition-timing-function	规定过渡效果的时间曲线。默认是 "ease"
+            transition-delay	        规定过渡效果何时开始。默认是 0。
+        */
+
+        .box2 {
+            transition-property: width height;
+            /* 规定了应用时间轴的属性，box2中，只有width会在2秒后逐渐开始变化，其余属性均为突变 */
+            /* 有多个属性需要变换则 使用空格分隔 */
+            transition-duration: 1s;
+            /* 持续时间 */
+            transition-timing-function: linear;
+            /* 规定过渡的事件曲线 默认为 ease
+                可取值：
+                    linear	                规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+                    ease	                规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+                    ease-in	                规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+                    ease-out	            规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+                    ease-in-out	            规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+                    cubic-bezier(n,n,n,n)	在 cubic-bezier 函数中定义自己的值。可能的值是 0 至 1 之间的数值。
+             */
+            transition-delay: 2s;
+            /* 动画开始的延迟时间 */
+        }
+
+        .box2:hover {
+            width: 300px;
+            height: 100px;
+            background-color: deeppink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1">Box1</div>
+    <div class="box box2">Box2</div>
+</body>
+
+</html>
